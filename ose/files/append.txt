@@ -1,0 +1,6 @@
+- name: Additional node config
+  hosts: oo_nodes_use_contrail
+  roles:
+  - role: contrail_node
+    contrail_master: "{{ groups.masters.0 }}"
+    when: openshift_use_contrail | default(false) | bool

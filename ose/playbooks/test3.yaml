@@ -1,0 +1,40 @@
+---
+- hosts: 127.0.0.1
+  vars_prompt:
+    - name: src_directory
+      prompt: "Enter directory where you have your openshift-ansible"
+      private: no
+    - name: dst_directory
+      prompt: "Enter directory where you want to place openshift-ansible-contrail"
+      private: no
+  tasks:
+    - name: pull the latest code from git
+      git:
+       repo: https://github.com/Juniper/openshift-ansible.git
+       dest: "{{ dst_directory }}"
+       version: release-3.9-contrail
+
+    - name: copy contrail_master into your openshift-ansible-deployer
+      command: cp -r {{dst_directory}}/roles/contrail_master {{src_directory}}/roles/.
+    - name: copy contrail_nodes folder into your openshift-ansible-deployer
+      command: cp -r {{dst_directory}}/roles/contrail_node {{src_directory}}/roles/.
+
+    - name: "Set permissions for replacement master config files"
+      file: path=/root/ose/files/replace.sh mode=0777
+    - name: "Execute the script"
+      script: /root/ose/files/replace.sh
+
+    - name: "Set permissions for replacement node config files"
+      file: path=/root/ose/files/modify.sh mode=0777
+    - name: "Execute the script"
+      script: /root/ose/files/modify.sh
+     
+    - name: "Set permissions for replacement node config files"
+      file: path=/root/ose/files/append_nodes.sh mode=0777
+    - name: "Execute the script"
+      script: /root/ose/files/append_nodes.sh
+
+    - name: "Set permissions for replacement contrail config files"
+      file: path=/root/ose/files/copy_config.sh mode=0777
+    - name: "Execute the script"
+      script: /root/ose/files/copy_config.sh

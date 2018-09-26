@@ -1,0 +1,2 @@
+#!/bin/bash
+sed -e '/tasks/{a \ \ \- group_by:\n \ \ \ \ \ \key: oo_nodes_use_{{ (openshift_use_contrail | default(False)) | ternary('contrail','nothing') }}\n \ \ \ changed_when: False' -e ':a;n;ba}' /root/ose/openshift-ansible/playbooks/openshift-node/private/additional_config.yml > /root/ose/new.yml ; mv /root/ose/new.yml /root/ose/openshift-ansible/playbooks/openshift-node/private/additional_config.yml
