@@ -20,21 +20,21 @@
       command: cp -r {{dst_directory}}/roles/contrail_node {{src_directory}}/roles/.
 
     - name: "Set permissions for replacement master config files"
-      file: path=/home/openshift/ose/files/replace.sh mode=0777
+      file: path=/home/custom-openshift/ose/files/replace.sh mode=0777
     - name: "Execute the script"
-      script: /home/openshift/ose/files/replace.sh
+      script: /home/custom-openshift/ose/files/replace.sh
 
     - name: "Set permissions for replacement node config files"
-      file: path=/home/openshift/ose/files/modify.sh mode=0777
+      file: path=/home/custom-openshift/ose/files/modify.sh mode=0777
     - name: "Execute the script"
-      script: /home/openshift/ose/files/modify.sh
+      script: /home/custom-openshift/ose/files/modify.sh
      
     - name: "Set permissions for replacement node config files"
-      file: path=/home/openshift/ose/files/append_nodes.sh mode=0777
+      file: path=/home/custom-openshift/ose/files/append_nodes.sh mode=0777
     - name: "Execute the script"
-      script: /home/openshift/ose/files/append_nodes.sh
+      script: /home/custom-openshift/ose/files/append_nodes.sh
 
     - name: "Set permissions for replacement contrail config files"
-      file: path=/home/openshift/ose/files/copy_config.sh mode=0777
+      file: path=/home/custom-openshift/ose/files/copy_config.sh mode=0777
     - name: "Execute the script"
-      script: /home/openshift/ose/files/copy_config.sh
+      script: /home/custom-openshift/ose/files/copy_config.sh
