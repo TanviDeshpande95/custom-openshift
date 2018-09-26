@@ -8,7 +8,7 @@
       prompt: "Enter directory where you want to place openshift-ansible-contrail"
       private: no
   tasks:
-    - name: pull the latest code from git
+    - name: pull the latest openshift-contrail-code from git
       git:
        repo: https://github.com/Juniper/openshift-ansible.git
        dest: "{{ dst_directory }}"
@@ -20,21 +20,21 @@
       command: cp -r {{dst_directory}}/roles/contrail_node {{src_directory}}/roles/.
 
     - name: "Set permissions for replacement master config files"
-      file: path=/root/ose/files/replace.sh mode=0777
+      file: path=/home/openshift/ose/files/replace.sh mode=0777
     - name: "Execute the script"
-      script: /root/ose/files/replace.sh
+      script: /home/openshift/ose/files/replace.sh
 
     - name: "Set permissions for replacement node config files"
-      file: path=/root/ose/files/modify.sh mode=0777
+      file: path=/home/openshift/ose/files/modify.sh mode=0777
     - name: "Execute the script"
-      script: /root/ose/files/modify.sh
+      script: /home/openshift/ose/files/modify.sh
      
     - name: "Set permissions for replacement node config files"
-      file: path=/root/ose/files/append_nodes.sh mode=0777
+      file: path=/home/openshift/ose/files/append_nodes.sh mode=0777
     - name: "Execute the script"
-      script: /root/ose/files/append_nodes.sh
+      script: /home/openshift/ose/files/append_nodes.sh
 
     - name: "Set permissions for replacement contrail config files"
-      file: path=/root/ose/files/copy_config.sh mode=0777
+      file: path=/home/openshift/ose/files/copy_config.sh mode=0777
     - name: "Execute the script"
-      script: /root/ose/files/copy_config.sh
+      script: /home/openshift/ose/files/copy_config.sh

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat /root/ose/files/contrail_config.txt >> /root/ose/openshift-ansible/inventory/ose-install
+cat /home/openshift/ose/files/contrail_config.txt >> /home/openshift-ansible/inventory/ose-install
