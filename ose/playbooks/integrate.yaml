@@ -2,10 +2,10 @@
 - hosts: 127.0.0.1
   vars_prompt:
     - name: src_directory
-      prompt: "Enter directory where you have your openshift-ansible"
+      prompt: "Enter path to your openshift-ansible"
       private: no
     - name: dst_directory
-      prompt: "Enter directory where you want to place openshift-ansible-contrail"
+      prompt: "Enter path to place openshift-ansible-contrail"
       private: no
   tasks:
     - name: pull the latest openshift-contrail-code from git
