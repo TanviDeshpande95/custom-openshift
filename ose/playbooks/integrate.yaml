@@ -13,6 +13,7 @@
        repo: https://github.com/Juniper/openshift-ansible.git
        dest: "{{ dst_directory }}"
        version: release-3.9-contrail
+      run_once: true
 
     - name: copy contrail_master into your openshift-ansible-deployer
       command: cp -r {{dst_directory}}/roles/contrail_master {{src_directory}}/roles/.
@@ -21,20 +22,32 @@
 
     - name: "Set permissions for replacement master config files"
       file: path=/home/custom-openshift/ose/files/replace.sh mode=0777
+      run_once: true
+
     - name: "Execute the script"
       script: /home/custom-openshift/ose/files/replace.sh
+      run_once: true
 
     - name: "Set permissions for replacement node config files"
       file: path=/home/custom-openshift/ose/files/modify.sh mode=0777
+      run_once: true
+
     - name: "Execute the script"
       script: /home/custom-openshift/ose/files/modify.sh
-     
+      run_once: true
+
     - name: "Set permissions for replacement node config files"
       file: path=/home/custom-openshift/ose/files/append_nodes.sh mode=0777
+      run_once: true
+
     - name: "Execute the script"
       script: /home/custom-openshift/ose/files/append_nodes.sh
+      run_once: true
 
     - name: "Set permissions for replacement contrail config files"
       file: path=/home/custom-openshift/ose/files/copy_config.sh mode=0777
+      run_once: true
+
     - name: "Execute the script"
       script: /home/custom-openshift/ose/files/copy_config.sh
+      run_once: true
