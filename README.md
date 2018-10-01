@@ -11,16 +11,20 @@ On the Openshift-ansible node
 Step 1: 
 cd /home
 
-Step2: Download Openshift-ansible from Openshift Repo 
+Step2: Download Openshift-ansible from Openshift Repo
+
 git clone https://github.com/openshift/openshift-ansible.git -b release-3.9
 
 Step3: Download the Contrail-Openshift-ansible from Juniper Repo 
+
 mkdir contrail && cd contrail &&  git clone https://github.com/Juniper/openshift-ansible.git -b release-3.9-contrail
 
 Step4: Clone the custom-openshift repo 
+
 git clone https://github.com/Juniper/custom-openshift.git
 
 Step5: Go to the playbook Directory and execute the playbook 
+
 cd /home/custom-openshift/ose/playbooks/
 
 ```
