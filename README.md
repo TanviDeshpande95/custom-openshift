@@ -1,12 +1,13 @@
-#Integrating Contrail with existing openshift-ansible
+# Integrating Contrail with existing openshift-ansible
 
-## Simple playbook to append Contrail SDN roles to Openshift-ansible 
-## For the current iteration, Please use the /home mount space to download the openshift-ansible code. 
+This is a simple playbook to append Contrail SDN roles to an existing openshift-ansible deplopyer
+
+**For the current iteration, Please use the /home mount space to download the openshift-ansible code. 
 
 
-Steps to execute 
+### Steps to execute 
 
-On the Openshift-ansible node 
+**On the Openshift-ansible node 
 
 **Step 1: Change directory to /home
 ```cd /home```
