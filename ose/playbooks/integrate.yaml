@@ -48,6 +48,6 @@
       file: path=/home/custom-openshift/ose/files/copy_config.sh mode=0777
       run_once: true
 
-    - name: "Execute the script"
-      script: /home/custom-openshift/ose/files/copy_config.sh
-      run_once: true
+  #  - name: "Execute the script"
+  #    script: /home/custom-openshift/ose/files/copy_config.sh
+  #    run_once: true
