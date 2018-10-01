@@ -2,29 +2,29 @@
 
 This is a simple playbook to append Contrail SDN roles to an existing openshift-ansible deplopyer
 
-**For the current iteration, Please use the /home mount space to download the openshift-ansible code. 
+**For the current iteration, Please use the /home mount space to download the openshift-ansible code.** 
 
 
 ### Steps to execute 
 
-**On the Openshift-ansible node 
+**On the Openshift-ansible node**
 
-**Step 1: Change directory to /home
+**Step 1: Change directory to /home**
 ```cd /home```
 
-**Step2: Download Openshift-ansible from Openshift Repo
+**Step2: Download Openshift-ansible from Openshift Repo**
 
 ```git clone https://github.com/openshift/openshift-ansible.git -b release-3.9```
 
-**Step3: Download the Contrail-Openshift-ansible from Juniper Repo 
+**Step3: Download the Contrail-Openshift-ansible from Juniper Repo**
 ```
 mkdir contrail && cd contrail &&  git clone https://github.com/Juniper/openshift-ansible.git -b release-3.9-contrail
 ```
-**Step4: Clone the custom-openshift repo 
+**Step4: Clone the custom-openshift repo** 
 ```
 git clone https://github.com/Juniper/custom-openshift.git
 ```
-**Step5: Go to the playbook Directory and execute the playbook 
+**Step5: Go to the playbook Directory and execute the playbook** 
 
 
 ```
@@ -78,7 +78,7 @@ PLAY RECAP *********************************************************************
 [root@ip-10-10-10-10 playbooks]#
 ```
 
-**Step6 : Verify if contrail code has been appended to the Openshift-playbooks
+**Step6 : Verify if contrail code has been appended to the Openshift-playbooks**
 
 ```
 [root@ip-10-10-10-10 playbooks]# cd /home/openshift-ansible/
