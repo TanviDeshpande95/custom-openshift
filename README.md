@@ -26,7 +26,7 @@ git clone https://github.com/openshift/openshift-ansible.git -b release-3.9
 ```
 cd /usr/share/ansible
 
-git clone https://github.com/Juniper/custom-openshift.git
+sudo git clone https://github.com/Juniper/custom-openshift.git
 ```
 **Step4: Go to the playbook Directory and execute the playbook** 
 
