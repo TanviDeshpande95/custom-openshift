@@ -100,6 +100,6 @@ contrail_registry=hub.juniper.net/contrail
 # Username /Password for private Docker registry
 #contrail_registry_username=test
 #contrail_registry_password=test
-vrouter_gateway=10.87.65.126
+vrouter_gateway=10.10.10.1
 
 ```
