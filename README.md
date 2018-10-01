@@ -14,9 +14,12 @@ This is a simple playbook to append Contrail SDN roles to an existing openshift-
 cd /home
 ```
 
-**Step2: Download Openshift-ansible from Openshift Repo**
+**Step2: Download Openshift-ansible from your Openshift Repo**
 
-```git clone https://github.com/openshift/openshift-ansible.git -b release-3.9```
+```
+eg:
+git clone https://github.com/openshift/openshift-ansible.git -b release-3.9
+```
 
 **Step3: Download the Contrail-Openshift-ansible from Juniper Repo**
 ```
