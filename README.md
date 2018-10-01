@@ -90,7 +90,7 @@ PLAY RECAP *********************************************************************
 [root@ip-10-10-10-10 openshift-ansible]# git status
 ```
 
-**Step6 : Please append the contrail inventory variables to your openshift-asible inventory**
+**Step7 : Please append the contrail inventory variables to your openshift-asible inventory**
 ```
 openshift_use_contrail=true
 contrail_version=5.0
