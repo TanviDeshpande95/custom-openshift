@@ -28,7 +28,7 @@ cd /usr/share/ansible
 
 git clone https://github.com/Juniper/custom-openshift.git
 ```
-**Step5: Go to the playbook Directory and execute the playbook** 
+**Step4: Go to the playbook Directory and execute the playbook** 
 
 
 ```
@@ -74,7 +74,7 @@ PLAY RECAP *********************************************************************
 [root@ip-10-10-10-10 playbooks]#
 ```
 
-**Step6 : Verify if contrail code has been appended to the Openshift-playbooks**
+**Step5 : Verify if contrail code has been appended to the Openshift-playbooks**
 
 ```
 [root@ip-10-10-10-10 playbooks]# cd /usr/share/ansible/openshift-ansible/
@@ -82,7 +82,7 @@ PLAY RECAP *********************************************************************
 [root@ip-10-10-10-10 openshift-ansible]# git status
 ```
 
-**Step7 : Please append the contrail inventory variables to your openshift-asible inventory**
+**Step6 : Please append the contrail inventory variables to your openshift-asible inventory**
 ```
 openshift_use_contrail=true
 contrail_version=5.0
