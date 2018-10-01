@@ -88,58 +88,18 @@ PLAY RECAP *********************************************************************
 [root@ip-10-10-10-10 playbooks]# cd /home/openshift-ansible/
 [root@ip-10-10-10-10 openshift-ansible]# 
 [root@ip-10-10-10-10 openshift-ansible]# git status
-# On branch release-3.9
-# Changes not staged for commit:
-#   (use "git add <file>..." to update what will be committed)
-#   (use "git checkout -- <file>..." to discard changes in working directory)
-#
-#	modified:   playbooks/openshift-master/private/config.yml
-#	modified:   playbooks/openshift-node/private/additional_config.yml
-#
-# Untracked files:
-#   (use "git add <file>..." to include in what will be committed)
-#
-#	roles/contrail_master/
-#	roles/contrail_node/
-no changes added to commit (use "git add" and/or "git commit -a")
-[root@ip-10-10-10-10 openshift-ansible]# git diff
-diff --git a/playbooks/openshift-master/private/config.yml b/playbooks/openshift-master/private/config.yml
-index bdbc206..26d45db 100644
---- a/playbooks/openshift-master/private/config.yml
-+++ b/playbooks/openshift-master/private/config.yml
-@@ -184,6 +184,8 @@
-     when: openshift_use_nuage | default(false) | bool
-   - role: calico_master
-     when: openshift_use_calico | default(false) | bool
-+  - role: contrail_master 
-+    when: openshift_use_contrail | default(false) | bool
-   tasks:
-   - import_role:
-       name: kuryr
-diff --git a/playbooks/openshift-node/private/additional_config.yml b/playbooks/openshift-node/private/additional
-index b054859..cc9a29a 100644
---- a/playbooks/openshift-node/private/additional_config.yml
-+++ b/playbooks/openshift-node/private/additional_config.yml
-@@ -7,6 +7,9 @@
-   - group_by:
-       key: oo_nodes_use_{{ (openshift_use_flannel | default(False)) | ternary('flannel','nothing') }}
-     changed_when: False
-+  - group_by:
-+      key: oo_nodes_use_{{ (openshift_use_contrail | default(False)) | ternary("contrail","nothing") }}
-+    changed_when: False
-   # Create group for calico nodes
-   - group_by:
-       key: oo_nodes_use_{{ (openshift_use_calico | default(False)) | ternary('calico','nothing') }}
-@@ -67,3 +70,9 @@
-       name: kuryr
-       tasks_from: node
-     when: openshift_use_kuryr | default(false) | bool
-+- name: Additional node config
-+  hosts: oo_nodes_use_contrail
-+  roles:
-+  - role: contrail_node
-+    contrail_master: "{{ groups.masters.0 }}"
-+    when: openshift_use_contrail | default(false) | bool
-[root@ip-10-10-10-10 openshift-ansible]#
 ```
 
+**Step6 : Please append the contrail inventory variables to your openshift-asible inventory**
+```
+openshift_use_contrail=true
+contrail_version=5.0
+contrail_container_tag=5.0.1-0.214
+contrail_registry_insecure=true
+contrail_registry=hub.juniper.net/contrail
+# Username /Password for private Docker regiteries
+#contrail_registry_username=test
+#contrail_registry_password=test
+vrouter_gateway=10.87.65.126
+
+```
