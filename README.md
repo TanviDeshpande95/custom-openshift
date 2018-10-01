@@ -93,10 +93,6 @@ contrail_registry=hub.juniper.net/contrail
 #contrail_registry_username=test
 #contrail_registry_password=test
 
-TASK [Execute the script] ***************************************************************************************
-changed: [127.0.0.1]
-
-TASK [Set permissions for repla
 vrouter_gateway=10.10.10.1
 
 ```
