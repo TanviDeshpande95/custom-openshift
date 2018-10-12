@@ -1,5 +1,5 @@
 #!/bin/bash
-
-cat /home/custom-openshift/ose/files/append.txt >> /home/openshift-ansible/playbooks/openshift-node/private/additional_config.yml
+dest=$1
+cat $PWD/../files/append.txt >> $dest/playbooks/openshift-node/private/additional_config.yml
 
 
