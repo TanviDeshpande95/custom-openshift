@@ -1,6 +1,6 @@
 ---
 - hosts: 127.0.0.1
-  tasks: 
+  tasks:
     - name: pull the latest openshift-contrail-code from git
       git:
        repo: https://github.com/Juniper/openshift-ansible.git
@@ -20,6 +20,23 @@
     - name: copy contrail_controller folder into your openshift-ansible-deployer
       command: cp -r {{dst_directory}}/roles/contrail_controller {{src_directory}}/roles/.
       become: yes
+
+    - name: copy contrail_controller folder into your openshift-ansible-deployer
+      command: cp -r {{dst_directory}}/roles/contrail_st {{src_directory}}/roles/.
+      become: yes
+
+    - name: copy contrail_controller folder into your openshift-ansible-deployer
+      command: cp -r {{dst_directory}}/roles/contrail_web_console {{src_directory}}/roles/.
+      become: yes
+
+    - name: copy contrail_common folder into your openshift-ansible-deployer
+      command: cp -r {{dst_directory}}/roles/contrail_common {{src_directory}}/roles/.
+      become: yes
+
+    - name: Patch openshift node defaults main.yml file
+      command: cp -r {{dst_directory}}/roles/openshift_node/defaults/main.yml {{src_directory}}/roles/openshift_node/defaults/main.yml
+      become: yes
+      run_once: true
 
     - name: "Set permissions for replacement master config files"
       file: path="../files/replace.sh" mode=0777
@@ -47,6 +64,26 @@
       become: yes
 
     - name: "Execute the script for updating node config files"
-      script: ../files/append_nodes.sh {{ src_directory }} 
+      script: ../files/append_nodes.sh {{ src_directory }}
+      run_once: true
+      become: yes
+
+    - name: "Set permissions for manage_node.sh"
+      file: path="../files/manage_node.sh" mode=0777
+      run_once: true
+      become: yes
+
+    - name: "Execute the script for appending to manage-node.yml files"
+      script: ../files/manage_node.sh {{ src_directory }}
+      run_once: true
+      become: yes
+
+    - name: "Set permissions for service_node_template.sh"
+      file: path="../files/service_node_template.sh" mode=0777
+      run_once: true
+      become: yes
+
+    - name: "Execute the script for updating openshift node templates"
+      script: ../files/service_node_template.sh {{ src_directory }}
       run_once: true
       become: yes
